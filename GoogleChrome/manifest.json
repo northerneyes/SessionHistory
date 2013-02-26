@@ -1,0 +1,19 @@
+{
+    "default_locale":"en",
+    "name": "SessionHistory",
+    "version": "0.1",
+    "manifest_version": 2,
+    "description": "This extension can allow you easily return closed tabs",
+    "browser_action": {
+        "default_icon": "icons/icon.png",
+        "default_popup": "popup.html"
+    },
+    "options_page": "options.html",
+    "background": { "scripts": ["functions.js", "background.js"] },
+    "permissions": [
+        "tabs"
+    ],
+    "icons": {
+        "128": "icons//icon.png"
+    }
+}
