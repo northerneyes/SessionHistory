@@ -7,9 +7,17 @@
 </head>
 
 <body>
+    <script id="tabsTemplate" type="text/x-jsrender">
+        <ol>
+            {{:#index + 1}}: <b>{{>title}}</b> ({{>time}})
+        </ol>
+    </script>
 
+    <div id="tabsList"></div>
 </body>
+
 <script src="jquery/jquery-1.7.1.min.js"></script>
-<script src="ember/ember-1.0.0-rc.1.js"></script>
+<script src="jquery/jsrender.js"></script>
+<script src="js/background.js"></script>
 <script src="js/popup.js"></script>
 </html>
