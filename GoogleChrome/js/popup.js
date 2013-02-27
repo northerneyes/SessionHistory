@@ -10,7 +10,7 @@ $(function() {
 
     // Render the template with the tabs data and insert
     // the rendered HTML under the "tabsList" element
-    $("#tabsList" ).html(
+    $(".tabs-display" ).html(
         $( "#tabsTemplate" ).render(tabs)
     );
 

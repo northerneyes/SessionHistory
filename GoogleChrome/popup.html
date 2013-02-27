@@ -8,12 +8,22 @@
 
 <body>
     <script id="tabsTemplate" type="text/x-jsrender">
-        <ol>
-            {{:#index + 1}}: <b>{{>title}}</b> ({{>time}})
-        </ol>
+        <li class="entry">
+            <label class="entry-box" for="checkbox-{{:#index + 1}}">
+                <div class="time">
+                    <input id="checkbox-{{:#index + 1}}" type="checkbox">
+                </div>
+            </label>
+            <b>{{>title}} </b>
+            {{>time}}
+        </li>
     </script>
 
-    <div id="tabsList"></div>
+    <div id="tabs-list">
+        <ol class="tabs-display">
+
+        </ol>
+    </div>
 </body>
 
 <script src="jquery/jquery-1.7.1.min.js"></script>
