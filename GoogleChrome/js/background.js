@@ -29,7 +29,7 @@ chrome.tabs.onRemoved.addListener(function(id, removeInfo) {
         id:tab.id,
         title:tab.title,
         url:tab.url,
-        tabFavIconUrl:tab.favIconUrl,
+        tabFavIconUrl:tab.url,
         time:today.getTime(),
         timeString:today.toLocaleTimeString()
     };
