@@ -9,28 +9,26 @@
 <body ng-controller="TabsListCtrl">
 <div id="tabs-list">
     <ol class="tabs-display">
-        <li class="entry" ng-repeat="tab in tabs">
+        <li class="entry" ng-repeat="tab in tabs | orderBy:'time':true">
             <label class="entry-box" for="checkbox-{{$index + 1}}">
                 <div class="time">
                     <input id="checkbox-{{$index + 1}}" type="checkbox">
-                    {{tab.time}}
+                    {{tab.timeString}}
                 </div>
-                <div class="title">
+                <div class="title"  style="background-image: url(chrome://favicon/size/16@1x/{{tab.tabFavIconUrl}}); background-size: 16px;">
                     <a href="{{tab.url}}" id="id-{{$index + 1}}"
                        target="_top" title="{{tab.title}}">
-                       <!--style="background-image: url({{tab.favIconUrl}}); background-size: 16px;">-->
                         {{tab.title}}
                     </a>
                 </div>
-
             </label>
         </li>
     </ol>
 </div>
+<button ng-click="clearHistory($event)">Clear</button>
 </body>
 
 <script src="angular/angular.js"></script>
 <script src="jquery/jquery-1.7.1.min.js"></script>
-<script src="jquery/jsrender.js"></script>
 <script src="js/popup.js"></script>
 </html>

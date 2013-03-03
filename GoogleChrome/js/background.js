@@ -11,8 +11,9 @@ var tabs = [
 //    { title: "The Inheritance", time: "1976", href:"something" }
 ];
 
+var maxRememberTabs = 10;
+
 var createdTabs = [];
-var index
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     // Note: this event is fired twice:
     // Once with `changeInfo.status` = "loading" and another time with "complete"
@@ -28,10 +29,22 @@ chrome.tabs.onRemoved.addListener(function(id, removeInfo) {
         id:tab.id,
         title:tab.title,
         url:tab.url,
-        favIconUrl:tab.favIconUrl,
-        time:today.toLocaleTimeString()
+        tabFavIconUrl:tab.favIconUrl,
+        time:today.getTime(),
+        timeString:today.toLocaleTimeString()
     };
 
     tabs.push(tabToHistory);
     delete createdTabs[id];
+
+    if(tabs.length == maxRememberTabs)
+        tabs.shift();
+});
+
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+    switch(request.messageId)
+    {
+        case 0:
+            tabs = [];
+    }
 });
