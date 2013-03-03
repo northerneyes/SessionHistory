@@ -1,18 +1,12 @@
-#tabs
-{
-    width:100%;
-    height: 500px;
-}
-
 body{
     font-family: 'Segoe UI', Tahoma, sans-serif;
     font-size: 75%;
-    width: 200px;
 }
 
 .tabs-display
 {
     padding: 0;
+    max-width: 300px;
 }
 
 .entry
@@ -23,9 +17,29 @@ body{
     overflow: auto;
 }
 
+.entry .title {
+    -webkit-padding-start: 20px;
+    background-position-y: 3px;
+    background-repeat: no-repeat;
+}
+
+.entry .title > a {
+    color: rgb(48, 57, 66);
+    text-decoration: none;
+}
+
+.entry .title {
+    -webkit-box-flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    /*display: inline-block;*/
+}
+
 #tabs-list
 {
-    max-width: 200px;
+    width: 100%;
+    /*max-width: 200px;*/
 }
 
 .entry-box {
@@ -38,4 +52,12 @@ body{
     max-width: 100%;
     overflow: hidden;
     padding-bottom: 1px;
+}
+
+.entry .time {
+    color: rgb(151, 156, 160);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90px;
 }

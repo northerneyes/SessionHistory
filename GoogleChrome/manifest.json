@@ -8,12 +8,16 @@
         "default_popup": "popup.html"
     },
     "sandbox": {
-        "pages": ["popup.html"]
+        "pages": ["render.html"]
     },
     "options_page": "options.html",
-    "background": { "scripts": ["js/background.js"] },
+
+    "background": {
+        "page" : "background.html"},
+
     "permissions": [
-        "tabs"
+        "tabs",
+        "<all_urls>"
     ],
     "icons": {
         "128": "icon.png"

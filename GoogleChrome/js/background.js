@@ -6,7 +6,32 @@
  * To change this template use File | Settings | File Templates.
  */
 var tabs = [
-    { title: "The Red Violin", time: "1998" },
-    { title: "Eyes Wide Shut", time: "1999" },
-    { title: "The Inheritance", time: "1976" }
+//    { title: "The Red Violin", time: "1998", href:"http://music.yandex.ru/#!/album/239825"},
+//    { title: "Eyes Wide Shut", time: "1999", href:"something" },
+//    { title: "The Inheritance", time: "1976", href:"something" }
 ];
+
+var createdTabs = [];
+var index
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    // Note: this event is fired twice:
+    // Once with `changeInfo.status` = "loading" and another time with "complete"
+    createdTabs[tabId] = tab;
+});
+
+chrome.tabs.onRemoved.addListener(function(id, removeInfo) {
+
+    var tab = createdTabs[id];
+    var today = new Date();
+
+    var tabToHistory = {
+        id:tab.id,
+        title:tab.title,
+        url:tab.url,
+        favIconUrl:tab.favIconUrl,
+        time:today.toLocaleTimeString()
+    };
+
+    tabs.push(tabToHistory);
+    delete createdTabs[id];
+});

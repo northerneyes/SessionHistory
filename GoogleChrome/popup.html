@@ -1,33 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html ng-app ng-csp>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"  />
     <title>Advanced Search</title>
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body>
-    <script id="tabsTemplate" type="text/x-jsrender">
-        <li class="entry">
-            <label class="entry-box" for="checkbox-{{:#index + 1}}">
+<body ng-controller="TabsListCtrl">
+<div id="tabs-list">
+    <ol class="tabs-display">
+        <li class="entry" ng-repeat="tab in tabs">
+            <label class="entry-box" for="checkbox-{{$index + 1}}">
                 <div class="time">
-                    <input id="checkbox-{{:#index + 1}}" type="checkbox">
+                    <input id="checkbox-{{$index + 1}}" type="checkbox">
+                    {{tab.time}}
                 </div>
+                <div class="title">
+                    <a href="{{tab.url}}" id="id-{{$index + 1}}"
+                       target="_top" title="{{tab.title}}">
+                       <!--style="background-image: url({{tab.favIconUrl}}); background-size: 16px;">-->
+                        {{tab.title}}
+                    </a>
+                </div>
+
             </label>
-            <b>{{>title}} </b>
-            {{>time}}
         </li>
-    </script>
-
-    <div id="tabs-list">
-        <ol class="tabs-display">
-
-        </ol>
-    </div>
+    </ol>
+</div>
 </body>
 
+<script src="angular/angular.js"></script>
 <script src="jquery/jquery-1.7.1.min.js"></script>
 <script src="jquery/jsrender.js"></script>
-<script src="js/background.js"></script>
 <script src="js/popup.js"></script>
 </html>
